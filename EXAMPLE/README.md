@@ -1,5 +1,12 @@
 This directory contains sample programs to illustrate how to call functions in ButterflyPACK from your application code. ButterflyPACK provides single-real, double-real, single-complex and double-complex data types. It provides both Fortran and C/C++ interfaces.
 
+### Note for the single-complex EMSURF workflow
+For the single-complex 3D EMSURF example (`#define DAT 2`):
+
+- The main program is `EXAMPLE/EMSURF_Driver_sp.f90`.
+- Application variables are defined in `EXAMPLE/EMSURF_Module_sp.f90`.
+- Core source implementation is in the `SRC` directory.
+
 ## Fortran Interface to construct, factor and solve a hierarchical matrix
 The following pseudo codes explain how to perform construction, factorization and solve of a linear system "Z" using the Fortran interface
 
@@ -151,6 +158,7 @@ mpirun -n nmpi ./EXAMPLE/ie3d
 
 EMSURF_Driver_sp.f90 and EMSURF_Module_sp.f90:
 (single-complex) A 3D EFIE/CFIE example for 3D PEC surfaces. This example constructs (with entry evaluation), factor the EFIE/CFIE matrix and solve it with plane-wave excitations.
+See `EXAMPLE/EMSURF_HODLR_level_butterfly_framework.md` for a code-oriented framework walkthrough of the HODLR `level_butterfly>0` path starting from `EMSURF_Driver_sp.f90`.
 ```
 sh ./EM3D_DATA/preprocessor_3dmesh/run_gmsh.sh ! this preprocessor generates a few 3D example meshes using Gmsh (http://gmsh.info/)
 mpirun -n nmpi ./EXAMPLE/ie3d_sp
